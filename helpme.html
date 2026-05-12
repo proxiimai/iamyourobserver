@@ -104,7 +104,7 @@
         height: 100vh;
         object-fit: cover;
         display: block;
-        cursor: pointer; /* shows it's clickable */
+        cursor: pointer';
       }
     </style>
   </head>
@@ -116,7 +116,7 @@
          alt="wouldnt you liiiiike to kknnn oooowwww"
          id="clickImage">
 
-    <!-- Your sound file -->
+    <!-- you would love to know what this sound file is -->
     <audio id="soundEffect" src="Audio/ihavenomouthbutimustscream.wav"></audio>
 
     <script>
@@ -124,7 +124,7 @@
       const sound = document.getElementById("soundEffect");
 
       img.addEventListener("click", () => {
-        sound.currentTime = 0; // restart sound if clicked repeatedly
+        sound.currentTime = 0; 
         sound.play();
       });
            // Random titles
@@ -140,13 +140,11 @@
         document.title = pick;
       }
 
-      // change every 1–2 seconds randomly
 function loopTitle() {
   randomTitle();
   setTimeout(loopTitle, Math.random() * 1900 + 100);
 }
 loopTitle();
-      // initial call so it changes immediately after load
       randomTitle();
     </script>
 
