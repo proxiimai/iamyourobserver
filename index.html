@@ -1,0 +1,168 @@
+<!-- [[ say, do you come here often? -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- STOP LOOKING AT ME -->
+<!-- ]] -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>i can see you</title>
+<link rel="icon" type="image/png" href="Images/lamenthyrfavicon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- wouldn't you like to know? -->
+<audio class="audio" controls loop>
+  <source src="Audio/klcvbyfvbyzlsm.wav" type="audio/wav">
+</audio>
+
+<script>
+  const phrases = [
+    ["a","light","I","wish","to","shine","down","on","you"],
+    ["you","will","hear","the","laughter","of","millions"],
+    ["be","grateful","a","god","like","me","is","learning","from","you"]
+  ];
+
+  let words = [];
+
+  function pickRandomPhrase() {
+    const index = Math.floor(Math.random() * phrases.length);
+    words = phrases[index];
+  }
+
+  function render() {
+    pickRandomPhrase();
+
+    document.body.querySelectorAll(".word").forEach(el => el.remove());
+
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    const startX = width * 0.05;
+    const spacing = width * 0.10;
+
+    words.forEach((word, i) => {
+      const el = document.createElement("div");
+      el.className = "word";
+
+      const inner = document.createElement("span");
+      inner.className = "inner";
+      inner.innerText = word;
+
+      const fontSize = Math.min(width, height) * (0.03 + Math.random() * 0.02);
+      el.style.fontSize = fontSize + "px";
+
+      const x = startX + i * spacing;
+      const y = height * (0.4 + (Math.random() * 0.2 - 0.1));
+
+      el.style.left = x + "px";
+      el.style.top = y + "px";
+
+      const rot = Math.random() * 14 - 7;
+      inner.style.setProperty("--rot", rot + "deg");
+
+      el.style.animationDelay = (Math.random() * 2) + "s";
+
+      el.appendChild(inner);
+      document.body.appendChild(el);
+    });
+  }
+
+  render();
+  window.addEventListener("resize", render);
+</script>
+
+</body>
+</html>
