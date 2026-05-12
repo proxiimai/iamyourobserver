@@ -1,0 +1,121 @@
+const phrases = [
+  ["a","light","I","wish","to","shine","down","on","you"],
+  ["you","will","hear","the","laughter","of","millions"],
+  ["be","grateful","a","god","like","me","is","learning","from","you"]
+];
+
+let words = [];
+let elements = [];
+
+// pick phrase ONCE
+function pickRandomPhrase() {
+  const index = Math.floor(Math.random() * phrases.length);
+  words = phrases[index];
+}
+
+pickRandomPhrase();
+
+function createWords() {
+  elements = [];
+
+  words.forEach(word => {
+    const el = document.createElement("div");
+    el.className = "word";
+
+    const inner = document.createElement("span");
+    inner.className = "inner";
+    inner.innerText = word;
+
+    const rot = Math.random() * 14 - 7;
+    inner.style.setProperty("--rot", rot + "deg");
+
+    el.style.animationDelay = (Math.random() * 2) + "s";
+
+    // STORE vertical offset permanently
+    el.dataset.offsetY = (Math.random() - 0.5);
+
+    el.appendChild(inner);
+
+    document.body.appendChild(el);
+
+    elements.push(el);
+  });
+}
+
+function layoutWords() {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
+  let fontSize = Math.min(width, height) * 0.08;
+
+  // apply font size
+  elements.forEach(el => {
+    el.style.fontSize = fontSize + "px";
+  });
+
+  function measureTotalWidth() {
+    let total = 0;
+
+    elements.forEach(el => {
+      total += el.getBoundingClientRect().width;
+    });
+
+    const gap = fontSize * 0.75;
+
+    total += gap * (elements.length - 1);
+
+    return { total, gap };
+  }
+
+  let { total, gap } = measureTotalWidth();
+
+  const maxWidth = width * 0.9;
+
+  if (total > maxWidth) {
+    const scale = maxWidth / total;
+
+    fontSize *= scale;
+
+    elements.forEach(el => {
+      el.style.fontSize = fontSize + "px";
+    });
+
+    ({ total, gap } = measureTotalWidth());
+  }
+
+  let x = (width - total) / 2;
+
+  elements.forEach(el => {
+    const wordWidth = el.getBoundingClientRect().width;
+
+    const offset = parseFloat(el.dataset.offsetY);
+
+    const y =
+      height * 0.5 +
+      offset * (fontSize * 1.1);
+
+    el.style.left = x + "px";
+    el.style.top = y + "px";
+
+    x += wordWidth + gap;
+  });
+}
+
+createWords();
+layoutWords();
+
+window.addEventListener("resize", layoutWords);
+
+// click
+document.addEventListener("click", (e) => {
+  const triggerWidth = window.innerWidth * 0.15;
+  const triggerHeight = window.innerHeight * 0.15;
+
+  const inTopRight =
+    e.clientX >= window.innerWidth - triggerWidth &&
+    e.clientY <= triggerHeight;
+
+  if (inTopRight) {
+    window.location.href = "https://iamyour.observer/helpme";
+  }
+});
