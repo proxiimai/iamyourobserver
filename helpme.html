@@ -90,7 +90,8 @@
     <meta charset="utf-8">
     <title>STOP LOOKING AT ME</title>
     <link rel="icon" type="image/png" href="Images/lamenthyrfavicon.png">
-       <style>
+
+    <style>
       html, body {
         margin: 0;
         padding: 0;
@@ -103,10 +104,51 @@
         height: 100vh;
         object-fit: cover;
         display: block;
+        cursor: pointer; /* shows it's clickable */
       }
     </style>
   </head>
+
   <body>
-     <img class="fullscreen-img" src="Images/STOPITSTOPITSTOPIT.png" alt="wouldnt you liiiiike to kknnn oooowwww">
+
+    <img class="fullscreen-img"
+         src="Images/STOPITSTOPITSTOPIT.png"
+         alt="wouldnt you liiiiike to kknnn oooowwww"
+         id="clickImage">
+
+    <!-- Your sound file -->
+    <audio id="soundEffect" src="Audio/ihavenomouthbutimustscream.wav"></audio>
+
+    <script>
+      const img = document.getElementById("clickImage");
+      const sound = document.getElementById("soundEffect");
+
+      img.addEventListener("click", () => {
+        sound.currentTime = 0; // restart sound if clicked repeatedly
+        sound.play();
+      });
+           // Random titles
+      const titles = [
+        "STOP LOOKING AT ME",
+        "WHY ARE YOU STILL HERE",
+        "rejoice!",
+        "you have no idea what you're doing",
+        "Zm9yZXZlcg==",
+      ];
+      function randomTitle() {
+        const pick = titles[Math.floor(Math.random() * titles.length)];
+        document.title = pick;
+      }
+
+      // change every 1–2 seconds randomly
+function loopTitle() {
+  randomTitle();
+  setTimeout(loopTitle, Math.random() * 1900 + 100);
+}
+loopTitle();
+      // initial call so it changes immediately after load
+      randomTitle();
+    </script>
+
   </body>
 </html>
