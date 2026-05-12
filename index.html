@@ -231,29 +231,6 @@ document.addEventListener("click", (e) => {
   }
 });
 
-const floatingPhrases = [
-  "directories",
-];
-
-function spawnFloatingText() {
-  const el = document.createElement("div");
-  el.className = "floating-text";
-
-  el.innerText =
-    floatingPhrases[Math.floor(Math.random() * floatingPhrases.length)];
-
-  // random position
-  el.style.left = Math.random() * window.innerWidth + "px";
-  el.style.top = Math.random() * window.innerHeight + "px";
-
-  document.body.appendChild(el);
-
-  // remove after animation
-  setTimeout(() => el.remove(), 3000);
-}
-
-// spawn continuously
-setInterval(spawnFloatingText, 600);
 </script>
 
 </body>
