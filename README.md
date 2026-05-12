@@ -1,2 +1,0 @@
-# iamyourobserver
-site
