@@ -58,3 +58,18 @@
   .audio:hover {
     opacity: 0.6;    
   }
+
+.floating-text {
+  position: fixed;
+  color: white;
+  opacity: 0.9;
+  pointer-events: none;
+  font-family: sans-serif;
+  animation: fadeOut 3s forwards;
+  white-space: nowrap;
+}
+
+@keyframes fadeOut {
+  0%   { opacity: 0.9; transform: translateY(0px); }
+  100% { opacity: 0; transform: translateY(-40px); }
+}
