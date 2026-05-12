@@ -62,7 +62,7 @@
 .floating-text {
   position: fixed;
   color: white;
-  opacity: 0.9;
+  opacity: 0.05;
   pointer-events: none;
   font-family: sans-serif;
   animation: fadeOut 3s forwards;
@@ -70,6 +70,6 @@
 }
 
 @keyframes fadeOut {
-  0%   { opacity: 0.9; transform: translateY(0px); }
+  0%   { opacity: 0.05; transform: translateY(0px); }
   100% { opacity: 0; transform: translateY(-40px); }
 }
